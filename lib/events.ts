@@ -200,7 +200,13 @@ export function createEventStore(data: { events: EventRecord[]; orders: OrderRec
     };
   }
 
-  return { listUpcomingEvents, startCheckout, completePayment };
+  // SEC-6: only the person whose name was typed at checkout may pay for or cancel an order.
+  function orderBelongsTo(orderId: string, name: string): boolean {
+    const order = orders.find((o) => o.order_id === orderId);
+    return !!order && order.user_id.trim().toLowerCase() === name.trim().toLowerCase();
+  }
+
+  return { listUpcomingEvents, startCheckout, completePayment, orderBelongsTo };
 }
 
 export function formatEventDate(iso: string): string {

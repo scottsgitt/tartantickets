@@ -92,7 +92,7 @@ export function EventActions({ eventId, soldOut, title }: { eventId: string; sol
     setError(null);
     setPhase("paying");
     try {
-      const { status, data } = await post(`/api/orders/${order.order_id}/pay`, { outcome });
+      const { status, data } = await post(`/api/orders/${order.order_id}/pay`, { outcome, name: name.trim() });
       if (status !== 200) {
         showFailure(data);
       } else if (data.outcome === "paid") {

@@ -167,7 +167,7 @@ describe("Story 3 AC3: a successful payment gives a receipt with a QR code", () 
 
   it("story3_api_pay_returns_a_receipt", async () => {
     const created = await (await createOrder(jsonRequest("/api/orders", { event_id: "evt-hackathon", name: "Pay Tester", seats: 1 }))).json();
-    const response = await payOrder(jsonRequest("/api/orders/x/pay", { outcome: "approve" }), {
+    const response = await payOrder(jsonRequest("/api/orders/x/pay", { outcome: "approve", name: "Pay Tester" }), {
       params: Promise.resolve({ id: created.order.order_id }),
     });
     expect(response.status).toBe(200);
@@ -208,7 +208,7 @@ describe("Story 3 AC4: a declined card releases the held seats", () => {
 
   it("story3_api_pay_decline_returns_declined", async () => {
     const created = await (await createOrder(jsonRequest("/api/orders", { event_id: "evt-hackathon", name: "Decline Tester", seats: 1 }))).json();
-    const response = await payOrder(jsonRequest("/api/orders/x/pay", { outcome: "decline" }), {
+    const response = await payOrder(jsonRequest("/api/orders/x/pay", { outcome: "decline", name: "Decline Tester" }), {
       params: Promise.resolve({ id: created.order.order_id }),
     });
     expect(response.status).toBe(200);
