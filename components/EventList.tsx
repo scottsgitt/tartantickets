@@ -39,7 +39,7 @@ export function EventList({ events }: { events: EventSummary[] }) {
                   <dd className={event.sold_out ? "sold-out" : undefined}>{seatsLabel(event)}</dd>
                 </div>
               </dl>
-              <EventActions soldOut={event.sold_out} title={event.title} />
+              <EventActions eventId={event.event_id} soldOut={event.sold_out} title={event.title} />
             </article>
           </li>
         );

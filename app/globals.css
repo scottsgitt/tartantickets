@@ -75,3 +75,24 @@ dd.sold-out { color: var(--accent); font-weight: 700; }
   .event-card, .button { transition: none; }
   .event-card:hover { transform: none; }
 }
+
+/* Story 3: buying */
+.buy-form { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; width: 100%; }
+.field { display: grid; gap: 4px; flex: 1 1 180px; }
+.field.narrow { flex: 0 0 90px; }
+.field label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.field input {
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid var(--ink-muted);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+}
+.field input:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.button:disabled { opacity: 0.55; cursor: not-allowed; }
+.checkout { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; }
+.action-error { margin: 0; width: 100%; color: var(--accent); font-weight: 600; }
+.receipt { display: block; }
+.receipt h3 { margin: 0 0 12px; }
+.qr { display: block; margin: 0 0 12px; border: 1px solid var(--border); border-radius: 8px; }
